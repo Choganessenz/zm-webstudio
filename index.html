@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZM Webstudios - Moderne Webdesign & Wartung</title>
+    <style>
+        /* Globale Stile */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1, h2, h3 {
+            font-weight: 600;
+        }
+        
+        h1 {
+            font-size: 56px;
+            line-height: 1.1;
+        }
+        
+        h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #0066cc;
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            color: #000;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #0071e3;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: #0077ed;
+            transform: scale(1.02);
+            color: white;
+        }
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #000;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: #1d1d1f;
+            font-weight: 500;
+            font-size: 16px;
+        }
+        
+        nav ul li a:hover {
+            color: #0066cc;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Mobile Navigation Dropdown */
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            padding: 20px 0;
+            animation: slideDown 0.3s ease;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .mobile-nav.active {
+            display: block;
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+        }
+        
+        .mobile-nav ul li {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .mobile-nav ul li a {
+            display: block;
+            padding: 15px 30px;
+            color: #1d1d1f;
+            font-weight: 500;
+            font-size: 18px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-nav ul li a:hover {
+            background-color: rgba(0, 102, 204, 0.05);
+            color: #0066cc;
+            padding-left: 35px;
+        }
+        
+        /* Hero Section mit Parallax */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+        }
+        
+        .hero-parallax {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/Bilder/Hintergrund_code.png');
+            background-size: cover;
+            background-position: center;
+            transform: translateZ(-1px) scale(1);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            z-index: 1;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Über uns Section */
+        .about {
+            background-color: #fff;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+        
+        .about-image {
+            width: 45%;
+            height: 400px;
+            background-image: url('/api/placeholder/800/600');
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-text {
+            width: 55%;
+        }
+        
+        /* Leistungen Section */
+        .services {
+            background-color: #f5f5f7;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .service-card {
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-content {
+            padding: 30px;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 15px;
+        }
+        
+        /* Preise Section */
+        .pricing {
+            background-color: #fff;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .pricing-card {
+            background-color: #f5f5f7;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+            padding: 40px 30px;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pricing-card.featured {
+            background: linear-gradient(135deg, #0077ed 0%, #00c2ff 100%);
+            color: white;
+        }
+        
+        .pricing-card.featured .price {
+            color: white;
+        }
+        
+        .pricing-card.featured .btn {
+            background-color: white;
+            color: #0071e3;
+        }
+        
+        .pricing-card.featured .btn:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .price {
+            font-size: 48px;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin: 20px 0;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .pricing-features li {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .pricing-card.featured .pricing-features li {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Kontakt Section */
+        .contact {
+            background-color: #f5f5f7;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 16px;
+            border: 1px solid #d2d2d7;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: #0066cc;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1d1d1f;
+            color: #f5f5f7;
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .footer-links li {
+            margin: 0 15px;
+        }
+        
+        .footer-links li a {
+            color: #f5f5f7;
+            font-size: 14px;
+        }
+        
+        .footer-links li a:hover {
+            color: #0066cc;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #f5f5f7;
+            font-size: 20px;
+        }
+        
+        .copyright {
+            font-size: 14px;
+            margin-top: 20px;
+            color: #86868b;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 48px;
+            }
+            
+            h2 {
+                font-size: 36px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image, .about-text {
+                width: 100%;
+            }
+            
+            .about-image {
+                margin-bottom: 30px;
+            }
+            
+            /* Spezielle Anpassung für den zweiten Teammitglied */
+            .second-team-member {
+                flex-direction: column !important;
+            }
+            
+            .second-team-member .about-image {
+                order: -1; /* Bild immer zuerst anzeigen im mobilen Layout */
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 40px;
+            }
+            
+            h2 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 20px;
+            }
+            
+            nav {
+                display: none; /* Desktop Navigation auf Mobilgeräten ausblenden */
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .services-grid, .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">ZM Webstudios</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">Über uns</a></li>
+                    <li><a href="#services">Leistungen</a></li>
+                    <li><a href="#pricing">Preise</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu" id="mobileMenuToggle">☰</div>
+        </div>
+        <!-- Mobile Navigation Dropdown -->
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Über uns</a></li>
+                <li><a href="#services">Leistungen</a></li>
+                <li><a href="#pricing">Preise</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section mit Parallax -->
+    <section id="home" class="hero">
+        <div class="hero-parallax"></div>
+        <div class="hero-content">
+            <h1>Professionelle Website-Lösungen für Ihr Business</h1>
+            <p>Wir gestalten maßgeschneiderte Websites mit modernen Technologien und bieten zuverlässige Wartungsdienste</p>
+            <a href="#contact" class="btn">Jetzt Kontakt aufnehmen</a>
+        </div>
+    </section>
+
+    <!-- Über uns Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Über uns</h2>
+            
+            <!-- Erster Teammitglied (Inhaber) -->
+            <div class="about-content" style="margin-bottom: 60px;">
+                <div class="about-image" style="background-image: url('/Bilder/Andreas.PNG');"></div>
+                <div class="about-text">
+                    <h3>ZM Webstudios - Gründer & Webentwickler</h3>
+                    <p>Mit über 8 Jahren Erfahrung in der Webentwicklung und einem Hintergrund in UX/UI-Design bringe ich das technische Know-how mit, um moderne, benutzerfreundliche Websites zu erstellen, die nicht nur gut aussehen, sondern auch Ergebnisse liefern.</p>
+                    <p>Meine Expertise umfasst:</p>
+                    <ul style="margin-bottom: 20px; padding-left: 20px;">
+                        <li>Frontend-Entwicklung (HTML5, CSS3, JavaScript, React)</li>
+                        <li>Responsive Webdesign für alle Geräte</li>
+                        <li>Benutzerorientierte Interface-Gestaltung</li>
+                        <li>Suchmaschinenoptimierung (SEO)</li>
+                        <li>Performance-Optimierung</li>
+                    </ul>
+                    <p>Mein Ziel ist es, jedem Kunden eine maßgeschneiderte Lösung zu bieten, die seine individuellen Geschäftsziele unterstützt und die Erwartungen übertrifft.</p>
+                </div>
+            </div>
+            
+            <!-- Zweiter Teammitglied (Freund) - mit angepasstem CSS für mobile Ansicht -->
+            <div class="about-content second-team-member" style="flex-direction: row-reverse;">
+                <div class="about-image" style="background-image: url('/Bilder/Edwin.jpeg');"></div>
+                <div class="about-text">
+                    <h3>Design & Marketing Spezialist</h3>
+                    <p>Als kreativer Kopf unseres Teams bringt mein Partner mehr als 6 Jahre Erfahrung in Grafikdesign und digitaler Marketingstrategie mit. Seine Leidenschaft für visuelles Storytelling und Markenbildung ist in jedem unserer Projekte sichtbar.</p>
+                    <p>Seine Kernkompetenzen:</p>
+                    <ul style="margin-bottom: 20px; padding-left: 20px;">
+                        <li>Kreatives Webdesign und Prototyping</li>
+                        <li>Markenentwicklung und Corporate Identity</li>
+                        <li>Content-Strategie und Copywriting</li>
+                        <li>Social Media Marketing</li>
+                        <li>Conversion-Optimierung</li>
+                    </ul>
+                    <p>Durch die Kombination von ästhetischen Designs mit strategischem Marketing-Know-how sorgt er dafür, dass jede Website nicht nur beeindruckt, sondern auch konvertiert.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#services" class="btn">Unsere Leistungen entdecken</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leistungen Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Unsere Leistungen</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('/api/placeholder/600/400');"></div>
+                    <div class="service-content">
+                        <h3>Webdesign</h3>
+                        <p>Wir gestalten moderne, benutzerfreundliche und responsive Websites, die Ihre Marke perfekt repräsentieren und Besucher begeistern.</p>
+                        <p>Unser Design-Ansatz verbindet Ästhetik mit Funktionalität und basiert auf den neuesten Trends und Best Practices im Webdesign.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('/Bilder/Leistungen/Webentwicklung.png');"></div>
+                    <div class="service-content">
+                        <h3>Webentwicklung</h3>
+                        <p>Unsere Entwickler setzen Ihr Design mit sauberem, effizienten Code um und sorgen für optimale Performance und Benutzerfreundlichkeit.</p>
+                        <p>Wir nutzen aktuelle Technologien und Frameworks, um zukunftssichere Websites zu entwickeln, die auf allen Geräten perfekt funktionieren.</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('/api/placeholder/600/402');"></div>
+                    <div class="service-content">
+                        <h3>Website-Wartung</h3>
+                        <p>Mit unseren umfassenden Wartungsdiensten bleibt Ihre Website stets aktuell, sicher und optimal funktionsfähig.</p>
+                        <p>Wir kümmern uns um Updates, Sicherheitspatches, Backups und technische Optimierungen, damit Sie sich auf Ihr Kerngeschäft konzentrieren können.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preise Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2>Unsere Preise</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Basis Paket</h3>
+                    <div class="price">€899</div>
+                    <ul class="pricing-features">
+                        <li>Responsive Website (5 Seiten)</li>
+                        <li>Modernes Design</li>
+                        <li>SEO-Grundoptimierung</li>
+                        <li>Kontaktformular</li>
+                        <li>1 Monat kostenlose Wartung</li>
+                    </ul>
+                    <a href="#contact" class="btn">Anfrage stellen</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <h3>Premium Paket</h3>
+                    <div class="price">€1.499</div>
+                    <ul class="pricing-features">
+                        <li>Responsive Website (10 Seiten)</li>
+                        <li>Premium Design mit Animationen</li>
+                        <li>Umfassende SEO-Optimierung</li>
+                        <li>Content Management System</li>
+                        <li>3 Monate kostenlose Wartung</li>
+                        <li>Social Media Integration</li>
+                    </ul>
+                    <a href="#contact" class="btn">Anfrage stellen</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Wartung</h3>
+                    <div class="price">€99<small>/mo</small></div>
+                    <ul class="pricing-features">
+                        <li>Regelmäßige Updates</li>
+                        <li>Sicherheits-Backups</li>
+                        <li>Performance-Optimierung</li>
+                        <li>Technischer Support</li>
+                        <li>Monatlicher Bericht</li>
+                    </ul>
+                    <a href="#contact" class="btn">Anfrage stellen</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakt Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Kontaktieren Sie uns</h2>
+            <div class="contact-form">
+                <form id="contactForm" action="https://formsubmit.co/zm.webstudios@gmail.com" method="POST">
+                    <!-- FormSubmit Anti-Spam Feature -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://zmwebstudios.de/danke">
+                    <input type="hidden" name="_subject" value="Neue Anfrage von der ZM Webstudios Website">
+                    
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-Mail</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Telefon</label>
+                        <input type="tel" id="phone" name="phone" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Betreff</label>
+                        <input type="text" id="subject" name="subject" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Nachricht</label>
+                        <textarea id="message" name="message" class="form-control" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Nachricht senden</button>
+                    <div id="form-status" style="margin-top: 15px; display: none;"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="logo">ZM Webstudios</div>
+            
+            <ul class="footer-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Über uns</a></li>
+                <li><a href="#services">Leistungen</a></li>
+                <li><a href="#pricing">Preise</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+            
+            <div class="social-links">
+                <a href="#" target="_blank">Facebook</a>
+                <a href="#" target="_blank">Instagram</a>
+                <a href="#" target="_blank">LinkedIn</a>
+                <a href="#" target="_blank">Twitter</a>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 ZM Webstudios. Alle Rechte vorbehalten.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Parallax Effekt für Hero Section
+        window.addEventListener('scroll', function() {
+            const parallax = document.querySelector('.hero-parallax');
+            let scrollPosition = window.pageYOffset;
+            parallax.style.transform = 'translateY(' + scrollPosition * 0.5 + 'px)';
+        });
+        
+        // Mobile Menu Toggle mit Dropdown
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mobileNav = document.getElementById('mobileNav');
+            
+            mobileMenuToggle.addEventListener('click', function() {
+                mobileNav.classList.toggle('active');
+                
+                // Ändere das Menü-Icon basierend auf dem Zustand
+                if (mobileNav.classList.contains('active')) {
+                    mobileMenuToggle.innerHTML = '✕'; // X-Symbol wenn geöffnet
+                } else {
+                    mobileMenuToggle.innerHTML = '☰'; // Hamburger wenn geschlossen
+                }
+            });
+            
+            // Schließe das mobile Menü beim Klicken auf einen Link
+            const mobileLinks = mobileNav.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileNav.classList.remove('active');
+                    mobileMenuToggle.innerHTML = '☰';
+                    
+                    // Scroll zum Ziel mit Verzögerung für bessere UX
+                    const targetId = this.getAttribute('href');
+                    setTimeout(() => {
+                        document.querySelector(targetId).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }, 300);
+                });
+            });
+            
+            // Schließe das Menü, wenn außerhalb geklickt wird
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.mobile-menu') && 
+                    !event.target.closest('.mobile-nav') && 
+                    mobileNav.classList.contains('active')) {
+                    mobileNav.classList.remove('active');
+                    mobileMenuToggle.innerHTML = '☰';
+                }
+            });
+        });
+        
+        // Kontaktformular-Handler mit FormSubmit
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            // Wir verwenden keine preventDefault, da das Formular tatsächlich abgesendet werden soll
+            
+            // Status-Element für Feedback
+            const statusDiv = document.getElementById('form-status');
+            statusDiv.style.display = 'block';
+            statusDiv.textContent = 'Sende Nachricht...';
+            statusDiv.style.color = '#0071e3';
+            
+            // Die eigentliche Übermittlung wird von FormSubmit gehandhabt
+            // Dieser Event-Listener dient nur zur Verbesserung der Benutzerfreundlichkeit
+            
+            // Beachten Sie: Bei der ersten Übermittlung wird FormSubmit eine Bestätigungs-E-Mail senden
+            // Erst nach Bestätigung werden zukünftige Formulardaten an die angegebene E-Mail gesendet
+        });
+    </script>
+</body>
+</html>
