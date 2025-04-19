@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Referenzprojekte - ZM Webstudios</title>
+    <style>
+/* Globale Stile */
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        h1, h2, h3 {
+            font-weight: 600;
+        }
+        
+        h1 {
+            font-size: 56px;
+            line-height: 1.1;
+        }
+        
+        h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #0066cc;
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            color: #000;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #0071e3;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: #0077ed;
+            transform: scale(1.02);
+            color: white;
+        }
+        
+        section {
+            padding: 100px 0;
+        }
+
+        /* Header Styles */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+}
+
+.logo-image {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.logo-text {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    color: #1d1d1f;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+nav ul li a:hover {
+    color: #0066cc;
+}
+
+nav ul li a.active {
+    color: #0071e3;
+    font-weight: 600;
+}
+
+.mobile-menu {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Mobile Navigation Dropdown */
+.mobile-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    padding: 20px 0;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mobile-nav.active {
+    display: block;
+}
+
+.mobile-nav ul {
+    list-style: none;
+}
+
+.mobile-nav ul li {
+    margin: 0;
+    padding: 0;
+}
+
+.mobile-nav ul li a {
+    display: block;
+    padding: 15px 30px;
+    color: #1d1d1f;
+    font-weight: 500;
+    font-size: 18px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.mobile-nav ul li a.active {
+    color: #0071e3;
+    font-weight: 600;
+    background-color: rgba(0, 113, 227, 0.05);
+}
+
+.mobile-nav ul li a:hover {
+    background-color: rgba(0, 102, 204, 0.05);
+    color: #0066cc;
+    padding-left: 35px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #1d1d1f;
+    color: #f5f5f7;
+    padding: 40px 0 20px;
+    font-size: 14px;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.logo-placeholder {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.logo-placeholder svg {
+    margin-right: 10px;
+}
+
+.footer-links-wrapper {
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.footer-links {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-links li {
+    margin: 0 15px;
+}
+
+.footer-links li a {
+    color: #f5f5f7;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+.footer-links li a:hover {
+    color: #0066cc;
+}
+
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 10px;
+}
+
+.copyright {
+    color: #86868b;
+    padding-left: 10px;
+}
+
+.footer-legal {
+    display: flex;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.footer-legal a {
+    color: #86868b;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-legal a:hover {
+    color: #0066cc;
+}
+
+.separator {
+    margin: 0 10px;
+    color: #86868b;
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 992px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-logo {
+        margin-bottom: 20px;
+        padding-left: 0;
+    }
+    
+    .footer-links-wrapper {
+        padding-right: 0;
+    }
+    
+    .footer-links {
+        justify-content: center;
+        margin-top: 10px;
+    }
+    
+    .footer-links li {
+        margin: 5px 10px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        padding: 0;
+    }
+    
+    .copyright {
+        margin-bottom: 10px;
+        padding-left: 0;
+    }
+    
+    .footer-legal {
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        display: none;
+    }
+    
+    .mobile-menu {
+        display: block;
+    }
+    
+    .logo-image {
+        height: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text {
+        display: none; /* Logo-Text auf sehr kleinen Geräten ausblenden */
+    }
+    
+    .logo-image {
+        height: 30px;
+    }
+}
+
+        /* Referenzprojekte Sektion */
+        .portfolio-content {
+            padding-top: 120px;
+            padding-bottom: 80px;
+        }
+
+        .portfolio-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .portfolio-header h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #0071e3 0%, #00c2ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .portfolio-header p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+            font-size: 18px;
+        }
+
+        /* Galerie */
+        .gallery-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery {
+            width: 100%;
+            height: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .gallery-slide.active {
+            opacity: 1;
+        }
+
+        .slide-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+            padding: 40px 30px 30px;
+            color: white;
+        }
+
+        /* Galerie Navigation */
+        .gallery-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .gallery-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #d0d0d0;
+            margin: 0 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-dot.active {
+            background-color: #0071e3;
+            transform: scale(1.2);
+        }
+
+        .gallery-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 5;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            color: #0071e3;
+            font-size: 24px;
+        }
+
+        .gallery-arrow:hover {
+            background-color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .gallery-arrow.prev {
+            left: 20px;
+        }
+
+        .gallery-arrow.next {
+            right: 20px;
+        }
+
+        /* Hervorgehobener Menüpunkt */
+        nav ul li a.active {
+            color: #0071e3;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header mit hervorgehobenem Referenzprojekte-Reiter -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="/bilder/Logo_ohne_artefakte.png" alt="ZM Webstudios Logo" class="logo-image">
+                <span class="logo-text">Webstudios</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#about">Über uns</a></li>
+                    <li><a href="index.html#services">Leistungen</a></li>
+                    <li><a href="index.html#process">Ablauf</a></li>
+                    <li><a href="index.html#pricing">Preise</a></li>
+                    <li><a href="portfolio.html" class="active">Referenzprojekte</a></li>
+                    <li><a href="index.html#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu" id="mobileMenuToggle">☰</div>
+        </div>
+        <div class="mobile-nav" id="mobileNav">
+            <!-- Mobilmenü mit gleichen Einträgen -->
+        </div>
+    </header>
+
+    <!-- Portfolio Content -->
+    <div class="portfolio-content">
+        <div class="container">
+            <div class="portfolio-header">
+                <h1>Unsere Referenzprojekte</h1>
+                <p>Entdecken Sie eine Auswahl unserer erfolgreich abgeschlossenen Projekte und lassen Sie sich von unseren maßgeschneiderten Webdesign- und Entwicklungslösungen inspirieren.</p>
+            </div>
+            
+            <!-- Galerie mit den 4 Bildern -->
+            <div class="gallery-container">
+                <div class="gallery">
+                    <!-- 4 Slides für die Galerie -->
+
+                    <!-- Slide 1 -->
+                    <div class="gallery-slide active" id="slide1">
+                        <img src="/bilder/hintergrund_stock.jpg" alt="Business Website" class="slide-image">
+                        <div class="slide-content">
+                            <h3>Unternehmenswebsite für FinancePlus</h3>
+                            <p>Eine moderne, responsive Unternehmenswebsite für ein Finanzberatungsunternehmen mit einem benutzerfreundlichen Interface, das die Services optimal präsentiert und Neukunden anspricht.</p>
+                            <a href="#" class="project-link">
+                                Projekt ansehen
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="gallery-slide" id="slide2">
+                        <img src="/bilder/projekte/projekt_2.png" alt="E-Commerce Store" class="slide-image">
+                        <div class="slide-content">
+                            <h3>E-Commerce Shop für Parfüme</h3>
+                            <p>Ein vollständiger Online-Shop mit umfassender Produktverwaltung, sicherem Zahlungsgateway und optimierter User Experience, der die Verkäufe um 40% steigern konnte.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="gallery-slide" id="slide3">
+                        <img src="/bilder/projekt3.jpg" alt="Restaurant Website" class="slide-image">
+                        <div class="slide-content">
+                            <h3>Restaurant-Website für Gourmet Kitchen</h3>
+                            <p>Eine elegante Website mit Online-Reservierungssystem, dynamischer Speisekarte und ansprechenden Bildergalerien, die das kulinarische Erlebnis perfekt widerspiegelt.</p>
+                            <a href="#" class="project-link">
+                                Projekt ansehen
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 -->
+                    <div class="gallery-slide" id="slide4">
+                        <img src="/bilder/projekt4.jpg" alt="Portfolio Website" class="slide-image">
+                        <div class="slide-content">
+                            <h3>Portfolio für Kunstfotograf</h3>
+                            <p>Ein minimalistisches, aber wirkungsvolles Portfolio für einen renommierten Fotografen, das seine Arbeiten in den Mittelpunkt stellt und durch ein cleanes Design überzeugt.</p>
+                            <a href="#" class="project-link">
+                                Projekt ansehen
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigationspfeile -->
+                <div class="gallery-arrow prev" onclick="changeSlide(-1)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </div>
+                <div class="gallery-arrow next" onclick="changeSlide(1)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </div>
+            </div>
+            
+            <!-- Punkt-Navigation -->
+            <div class="gallery-nav">
+                <div class="gallery-dot active" onclick="goToSlide(0)"></div>
+                <div class="gallery-dot" onclick="goToSlide(1)"></div>
+                <div class="gallery-dot" onclick="goToSlide(2)"></div>
+                <div class="gallery-dot" onclick="goToSlide(3)"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <!-- Platzhalter für das Logo -->
+                    <div class="logo-placeholder">
+                        <img src="/bilder/Logo_ohne_artefakte.png" alt="ZM Webstudios Logo" height="40">
+                        <span>Webstudios</span>
+                    </div>
+                </div>
+                
+                <div class="footer-links-wrapper">
+                    <ul class="footer-links">
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#about">Über uns</a></li>
+                        <li><a href="index.html#services">Leistungen</a></li>
+                        <li><a href="index.html#process">Ablauf</a></li>
+                        <li><a href="index.html#pricing">Preise</a></li>
+                        <li><a href="portfolio.html">Referenzprojekte</a></li>
+                        <li><a href="index.html#contact">Kontakt</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    &copy; 2025 ZM Webstudios. Alle Rechte vorbehalten.
+                </div>
+                
+                <div class="footer-legal">
+                    <a href="impressum.html">Impressum</a>
+                    <span class="separator">|</span>
+                    <a href="datenschutz.html">Datenschutz</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript für die Bildergalerie -->
+    <script>
+        // Globale Variablen
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.gallery-slide');
+        const dots = document.querySelectorAll('.gallery-dot');
+        let slideInterval;
+
+        // Initialisieren und starten des Intervalls
+        function startSlideshow() {
+            // Setze Intervall für Bildwechsel alle 4 Sekunden
+            slideInterval = setInterval(() => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                updateSlides();
+            }, 5000);
+        }
+
+        // Aktualisiere die aktiven Slides und Dots
+        function updateSlides() {
+            // Alle Slides deaktivieren
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Alle Dots deaktivieren
+            dots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            // Aktuellen Slide und Dot aktivieren
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        // Zu bestimmtem Slide wechseln
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateSlides();
+            
+            // Intervall zurücksetzen, damit nicht sofort weitergeschaltet wird
+            clearInterval(slideInterval);
+            startSlideshow();
+        }
+
+        // Zum nächsten oder vorherigen Slide wechseln
+        function changeSlide(direction) {
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            updateSlides();
+            
+            // Intervall zurücksetzen
+            clearInterval(slideInterval);
+            startSlideshow();
+        }
+
+        // Beim Laden der Seite initialisieren
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Funktionalität
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mobileNav = document.getElementById('mobileNav');
+            
+            mobileMenuToggle.addEventListener('click', function() {
+                mobileNav.classList.toggle('active');
+                
+                if (mobileNav.classList.contains('active')) {
+                    mobileMenuToggle.innerHTML = '✕'; // X-Symbol wenn geöffnet
+                } else {
+                    mobileMenuToggle.innerHTML = '☰'; // Hamburger wenn geschlossen
+                }
+            });
+            
+            // Slideshow starten
+            startSlideshow();
+        });
+    </script>
+</body>
+</html>

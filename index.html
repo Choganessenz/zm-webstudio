@@ -88,110 +88,153 @@
         
         /* Header */
         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px 0;
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 15px 0;
+        background-color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .logo {
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+        font-weight: 700;
+        color: #000;
+    }
+    
+    .logo-image {
+        height: 60px;
+        margin-right: 10px;
+    }
+    
+    .logo-text {
+        font-size: 22px;
+        font-weight: 600;
+    }
+    
+    nav ul {
+        display: flex;
+        list-style: none;
+    }
+    
+    nav ul li {
+        margin-left: 30px;
+    }
+    
+    nav ul li a {
+        color: #1d1d1f;
+        font-weight: 500;
+        font-size: 16px;
+    }
+    
+    nav ul li a:hover {
+        color: #0066cc;
+    }
+    
+    .mobile-menu {
+        display: none;
+        font-size: 24px;
+        cursor: pointer;
+    }
+    
+    /* Mobile Navigation Dropdown */
+    .mobile-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        padding: 20px 0;
+        animation: slideDown 0.3s ease;
+    }
+    
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
         }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: #000;
+    }
+    
+    .mobile-nav.active {
+        display: block;
+    }
+    
+    .mobile-nav ul {
+        list-style: none;
+    }
+    
+    .mobile-nav ul li {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .mobile-nav ul li a {
+        display: block;
+        padding: 15px 30px;
+        color: #1d1d1f;
+        font-weight: 500;
+        font-size: 18px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+    }
+    
+    .mobile-nav ul li a:hover {
+        background-color: rgba(0, 102, 204, 0.05);
+        color: #0066cc;
+        padding-left: 35px;
+    }
+    
+    /* Responsive Anpassungen */
+    @media (max-width: 992px) {
+        .logo-text {
+            font-size: 20px;
         }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 30px;
-        }
-        
-        nav ul li a {
-            color: #1d1d1f;
-            font-weight: 500;
-            font-size: 16px;
-        }
-        
-        nav ul li a:hover {
-            color: #0066cc;
+    }
+    
+    @media (max-width: 768px) {
+        nav {
+            display: none;
         }
         
         .mobile-menu {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
-        
-        /* Mobile Navigation Dropdown */
-        .mobile-nav {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            z-index: 999;
-            padding: 20px 0;
-            animation: slideDown 0.3s ease;
-        }
-        
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .mobile-nav.active {
             display: block;
         }
         
-        .mobile-nav ul {
-            list-style: none;
+        .logo-image {
+            height: 35px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .logo-text {
+            display: none; /* Logo-Text auf sehr kleinen Geräten ausblenden */
         }
         
-        .mobile-nav ul li {
-            margin: 0;
-            padding: 0;
+        .logo-image {
+            height: 30px;
         }
-        
-        .mobile-nav ul li a {
-            display: block;
-            padding: 15px 30px;
-            color: #1d1d1f;
-            font-weight: 500;
-            font-size: 18px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-        
-        .mobile-nav ul li a:hover {
-            background-color: rgba(0, 102, 204, 0.05);
-            color: #0066cc;
-            padding-left: 35px;
-        }
+    }
         
         /* Hero Section mit Parallax */
         .hero {
@@ -317,6 +360,77 @@
         .service-content h3 {
             margin-bottom: 15px;
         }
+
+
+
+    /* Portfolio Button Styling */
+    .portfolio-button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+    }
+    
+    .portfolio-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 28px;
+        background: linear-gradient(135deg, #0071e3 0%, #00a1ff 100%);
+        color: white;
+        font-size: 18px;
+        font-weight: 500;
+        border-radius: 30px;
+        box-shadow: 0 8px 20px rgba(0, 113, 227, 0.3);
+        transition: all 0.3s ease;
+    }
+    
+    .portfolio-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 25px rgba(0, 113, 227, 0.4);
+    }
+    
+    .portfolio-btn:active {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 15px rgba(0, 113, 227, 0.4);
+    }
+    
+    .btn-icon {
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+    }
+    
+    .btn-arrow {
+        margin-left: 10px;
+        font-size: 20px;
+        transition: transform 0.3s ease;
+    }
+    
+    .portfolio-btn:hover .btn-arrow {
+        transform: translateX(5px);
+    }
+    
+    @media (max-width: 768px) {
+        .portfolio-btn {
+            font-size: 16px;
+            padding: 12px 24px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .portfolio-btn {
+            font-size: 14px;
+            padding: 10px 20px;
+        }
+        
+        .btn-icon {
+            margin-right: 8px;
+        }
+        
+        .btn-arrow {
+            margin-left: 8px;
+        }
+    }
         
 /* Process Section */
 .process {
@@ -1146,13 +1260,16 @@
     <!-- Header -->
     <header>
         <div class="container header-content">
-            <div class="logo">ZM Webstudios</div>
+            <div class="logo">
+                <img src="/bilder/Logo_ohne_artefakte.png" alt="ZM Webstudios Logo" class="logo-image">
+                <span class="logo-text">Webstudios</span>
+            </div>
             <nav>
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">Über uns</a></li>
                     <li><a href="#services">Leistungen</a></li>
-                    <li><a href="#process">Unser Ablauf</a></li>
+                    <li><a href="#process">Ablauf</a></li>
                     <li><a href="#pricing">Preise</a></li>
                     <li><a href="#contact">Kontakt</a></li>
                 </ul>
@@ -1165,7 +1282,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">Über uns</a></li>
                 <li><a href="#services">Leistungen</a></li>
-                <li><a href="#process">Unser Ablauf</a></li>
+                <li><a href="#process">Ablauf</a></li>
                 <li><a href="#pricing">Preise</a></li>
                 <li><a href="#contact">Kontakt</a></li>
             </ul>
@@ -1178,7 +1295,7 @@
         <div class="hero-content">
             <h1>Professionelle Website-Lösungen für Ihr Business</h1>
             <p>Wir gestalten maßgeschneiderte Websites mit modernen Technologien und bieten zuverlässige Wartungsdienste</p>
-            <a href="#contact" class="btn">Jetzt Kontakt aufnehmen</a>
+            <a href="#services" class="btn">Unsere Leistungen entdecken</a>
         </div>
     </section>
 
@@ -1349,6 +1466,20 @@
                         <p>Wir kümmern uns um Updates, Sicherheitspatches, Backups und technische Optimierungen, damit Sie sich auf Ihr Kerngeschäft konzentrieren können.</p>
                     </div>
                 </div>
+            </div>
+            <!-- Neuer Portfolio-Button -->
+            <div class="portfolio-button-container">
+                <a href="referenzprojekte.html" class="btn portfolio-btn">
+                    <span class="btn-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                            <polyline points="21 15 16 10 5 21"></polyline>
+                        </svg>
+                    </span>
+                    Unsere Referenzprojekte ansehen
+                    <span class="btn-arrow">→</span>
+                </a>
             </div>
         </div>
     </section>
@@ -1628,10 +1759,9 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <!-- Platzhalter für das Logo -->
-                    <div class="logo-placeholder">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4l1 7h-6l1-7Z"></path><path d="M2 14v-3a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v3"></path><path d="M3 14h18"></path><path d="M4 14v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"></path><path d="M10 20v-6"></path><path d="M14 20v-6"></path></svg>
-                        <span>ZM Webstudios</span>
+                    <div class="logo">
+                        <img src="/bilder/Logo_ohne_artefakte.png" alt="ZM Webstudios Logo" class="logo-image">
+                        <span class="logo-text"></span>
                     </div>
                 </div>
                 
