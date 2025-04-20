@@ -115,7 +115,7 @@ header {
 }
 
 .logo-image {
-    height: 40px;
+    height: 60px;
     margin-right: 10px;
 }
 
@@ -513,11 +513,78 @@ footer {
             right: 20px;
         }
 
-        /* Hervorgehobener Menüpunkt */
-        nav ul li a.active {
-            color: #0071e3;
-            font-weight: 600;
-        }
+
+        /* Responsive Anpassungen für die Galerie */
+/* Responsive Anpassungen für die Galerie - verbessert */
+@media (max-width: 768px) {
+    .gallery-container {
+        max-width: 100%;
+        border-radius: 8px;
+    }
+    
+    .gallery {
+        height: auto;
+    }
+    
+    .gallery-slide {
+        position: relative;
+        display: block;
+        height: auto;
+        opacity: 1; /* Alle Slides sichtbar machen */
+        margin-bottom: 20px;
+    }
+    
+    .gallery-slide:not(.active) {
+        display: none; /* Nur den aktiven Slide anzeigen */
+    }
+    
+    .slide-image {
+        position: relative;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/9; /* Festes Seitenverhältnis für alle Bilder */
+        object-fit: cover;
+    }
+    
+    .slide-content {
+        position: relative;
+        background: #f5f5f7;
+        color: #1d1d1f;
+        padding: 20px;
+        height: auto;
+        bottom: 0;
+    }
+    
+    .gallery-arrow {
+        top: calc(16vw * 9/16); /* Positioniert die Pfeile in der Mitte des Bildes */
+        transform: translateY(-50%);
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+    
+    .gallery-dot {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+/* Sehr kleine Geräte */
+@media (max-width: 480px) {
+    .slide-content h3 {
+        font-size: 18px;
+    }
+    
+    .slide-content p {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+    
+    .gallery-arrow {
+        width: 30px;
+        height: 30px;
+    }
+}
     </style>
 </head>
 <body>
@@ -535,14 +602,23 @@ footer {
                     <li><a href="index.html#services">Leistungen</a></li>
                     <li><a href="index.html#process">Ablauf</a></li>
                     <li><a href="index.html#pricing">Preise</a></li>
-                    <li><a href="portfolio.html" class="active">Referenzprojekte</a></li>
                     <li><a href="index.html#contact">Kontakt</a></li>
+                    <li><a href="referenzprojekte.html" class="active">Referenzprojekte</a></li>
                 </ul>
             </nav>
             <div class="mobile-menu" id="mobileMenuToggle">☰</div>
         </div>
+        <!-- Mobile Navigation Dropdown -->
         <div class="mobile-nav" id="mobileNav">
-            <!-- Mobilmenü mit gleichen Einträgen -->
+            <ul>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">Über uns</a></li>
+                <li><a href="index.html#services">Leistungen</a></li>
+                <li><a href="index.html#process">Ablauf</a></li>
+                <li><a href="index.html#pricing">Preise</a></li>
+                <li><a href="index.html#contact">Kontakt</a></li>
+                <li><a href="referenzprojekte.html" class="active">Referenzprojekte</a></li>
+            </ul>
         </div>
     </header>
 
@@ -561,60 +637,33 @@ footer {
 
                     <!-- Slide 1 -->
                     <div class="gallery-slide active" id="slide1">
-                        <img src="/bilder/hintergrund_stock.jpg" alt="Business Website" class="slide-image">
-                        <div class="slide-content">
-                            <h3>Unternehmenswebsite für FinancePlus</h3>
-                            <p>Eine moderne, responsive Unternehmenswebsite für ein Finanzberatungsunternehmen mit einem benutzerfreundlichen Interface, das die Services optimal präsentiert und Neukunden anspricht.</p>
-                            <a href="#" class="project-link">
-                                Projekt ansehen
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Slide 2 -->
-                    <div class="gallery-slide" id="slide2">
-                        <img src="/bilder/projekte/projekt_2.png" alt="E-Commerce Store" class="slide-image">
+                        <img src="/bilder/projekte/projekt_2.png" alt="Business Website" class="slide-image">
                         <div class="slide-content">
                             <h3>E-Commerce Shop für Parfüme</h3>
                             <p>Ein vollständiger Online-Shop mit umfassender Produktverwaltung, sicherem Zahlungsgateway und optimierter User Experience, der die Verkäufe um 40% steigern konnte.</p>
                         </div>
                     </div>
 
+                    <!-- Slide 2 -->
+                    <div class="gallery-slide" id="slide2">
+                        <img src="/bilder/projekte/projekt_3.png" alt="E-Commerce Store" class="slide-image">
+                        <div class="slide-content">
+                            <h3>Info Seite für eine Shishabar</h3>
+                            <p>Eine vollständige Seite auf der 2 Lokale zu sehen sind. Tisch Reservierung als auch die Speisekarten sind vorhanden. Durch die Online-Präsenz sind die Besucherzahlen gestiegen.</p>
+                        </div>
+                    </div>
+
                     <!-- Slide 3 -->
                     <div class="gallery-slide" id="slide3">
-                        <img src="/bilder/projekt3.jpg" alt="Restaurant Website" class="slide-image">
+                        <img src="/bilder/projekte/projekt_1.png" alt="Restaurant Website" class="slide-image">
                         <div class="slide-content">
-                            <h3>Restaurant-Website für Gourmet Kitchen</h3>
-                            <p>Eine elegante Website mit Online-Reservierungssystem, dynamischer Speisekarte und ansprechenden Bildergalerien, die das kulinarische Erlebnis perfekt widerspiegelt.</p>
-                            <a href="#" class="project-link">
-                                Projekt ansehen
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </a>
+                            <h3>Unsere Seite :)</h3>
+                            <p>Die Seite die es uns ermöglicht besseren Kontakt mit unseren Partnern aufzunehmen und für eine langfristige Kooperation zu Sorgen.</p>
                         </div>
                     </div>
 
                     <!-- Slide 4 -->
-                    <div class="gallery-slide" id="slide4">
-                        <img src="/bilder/projekt4.jpg" alt="Portfolio Website" class="slide-image">
-                        <div class="slide-content">
-                            <h3>Portfolio für Kunstfotograf</h3>
-                            <p>Ein minimalistisches, aber wirkungsvolles Portfolio für einen renommierten Fotografen, das seine Arbeiten in den Mittelpunkt stellt und durch ein cleanes Design überzeugt.</p>
-                            <a href="#" class="project-link">
-                                Projekt ansehen
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                    <polyline points="12 5 19 12 12 19"></polyline>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
+                    
                 </div>
                 
                 <!-- Navigationspfeile -->
@@ -635,7 +684,7 @@ footer {
                 <div class="gallery-dot active" onclick="goToSlide(0)"></div>
                 <div class="gallery-dot" onclick="goToSlide(1)"></div>
                 <div class="gallery-dot" onclick="goToSlide(2)"></div>
-                <div class="gallery-dot" onclick="goToSlide(3)"></div>
+                <!--<div class="gallery-dot" onclick="goToSlide(3)"></div> -->
             </div>
         </div>
     </div>

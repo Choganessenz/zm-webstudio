@@ -107,9 +107,21 @@
         }
         
         .logo {
+            display: flex;
+            align-items: center;
             font-size: 24px;
             font-weight: 700;
             color: #000;
+        }
+
+        .logo-image {
+            height: 60px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 600;
         }
         
         nav ul {
@@ -129,6 +141,12 @@
         
         nav ul li a:hover {
             color: #0066cc;
+        }
+
+        /* Hervorgehobener Menüpunkt */
+    nav ul li a.active {
+            color: #0071e3;
+            font-weight: 600;
         }
         
         .mobile-menu {
@@ -423,7 +441,10 @@
     <!-- Header -->
     <header>
         <div class="container header-content">
-            <div class="logo">ZM Webstudios</div>
+            <div class="logo">
+                <img src="/bilder/Logo_ohne_artefakte.png" alt="ZM Webstudios Logo" class="logo-image">
+                <span class="logo-text">Webstudios</span>
+            </div>
             <nav>
                 <ul>
                     <li><a href="index.html#home">Home</a></li>
@@ -432,6 +453,7 @@
                     <li><a href="index.html#process">Ablauf</a></li>
                     <li><a href="index.html#pricing">Preise</a></li>
                     <li><a href="index.html#contact">Kontakt</a></li>
+                    <li><a href="referenzprojekte.html" class="active">Referenzprojekte</a></li>
                 </ul>
             </nav>
             <div class="mobile-menu" id="mobileMenuToggle">☰</div>
