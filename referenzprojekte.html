@@ -20,6 +20,15 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
+        /* kein horizontales scrollen*/
+        html, body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }        
         
         .container {
             max-width: 1200px;
@@ -370,12 +379,9 @@ footer {
 }
 
 @media (max-width: 480px) {
-    .logo-text {
-        display: none; /* Logo-Text auf sehr kleinen Geräten ausblenden */
-    }
-    
     .logo-image {
-        height: 30px;
+        height: 60px;
+        margin-right: 10px;
     }
 }
 
@@ -391,7 +397,7 @@ footer {
         }
 
         .portfolio-header h1 {
-            font-size: 48px;
+            font-size: 40px;
             margin-bottom: 20px;
             background: linear-gradient(135deg, #0071e3 0%, #00c2ff 100%);
             -webkit-background-clip: text;
@@ -574,6 +580,7 @@ footer {
     .slide-content h3 {
         font-size: 18px;
     }
+
     
     .slide-content p {
         font-size: 14px;

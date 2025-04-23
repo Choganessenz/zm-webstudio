@@ -15,6 +15,20 @@
             scroll-behavior: smooth;
         }
         
+        /* kein horizontales scrollen*/
+        html, body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+
+
+
+
         body {
             background-color: #f5f5f7;
             color: #1d1d1f;
@@ -545,7 +559,7 @@ nav ul li a.active {
     /* Responsive Anpassungen für den Ablauf */
     @media (max-width: 992px) {
         .process-container {
-            max-width: 90%;
+            max-width: 100%;
         }
         
         .step-content {
@@ -555,22 +569,22 @@ nav ul li a.active {
     
     @media (max-width: 768px) {
         .process-container {
-            max-width: 95%;
+            max-width: 100%;
         }
         
         .process-timeline {
-            left: 70px;
+            left: 30px;
         }
         
         .process-steps {
-            padding-left: 25px;
+            padding-left: 5px;
         }
         
         .step-number {
             width: 40px;
             height: 40px;
             font-size: 18px;
-            margin-right: 40px;
+            margin-right: 20px;
             left: -20px;
         }
         
